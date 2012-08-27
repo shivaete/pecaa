@@ -1,5 +1,5 @@
 set :application, "Pecaa"
-set :repository,  "git@github.com:rajeshv/pecaa.git"
+set :repository,  "git@github.com:pecaaspree/pecaa.git"
 set :scm, :git
 set :user, "jmunta"
 set :database, "mysql"
