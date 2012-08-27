@@ -1,44 +1,48 @@
 <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css"/>
+    <%= stylesheet_link_tag "layout", "controlTabLayout"%>
+    <%= stylesheet_link_tag "select" %>
+    <%= stylesheet_link_tag "tabs" %>
+    <%= stylesheet_link_tag "prettyCheckboxes" %>
+    <%= stylesheet_link_tag "website" %>
+    <%= stylesheet_link_tag "facebox" %>
 <div class="pages-main">
     <div class="pages-wrapper">
         <div class="usersLeftPane left" id="show_order_list">
             <div class="title">
                 manage orders <span class="help"><a href="#"></a></span>
             </div>
-            <form action= <%= "/sites/#{params[:site_id]}/orders/search" %> method="post" name="searchbox" id='searchbox'>
-              <div class="userPanel">
-                  <div class="searchUser">
-                      <span class="searchInput left">
-                        <input type="text" name="query" id="query" placeholder="search">
-                      </span>
-                      <span class="addSearch left"><img border="0" src="/assets/btn_AddNewSearch.png"></span>
-                  </div>
-                       <div class="selectDivOrder">
-          <select name='search_on' id="search_on" class="select" title="Select one">
+            <div class="userSearch">
+              <div class="rcPaleBlue" style="padding:50px 5px 10px 5px; position:relative;">
+                <input type="text" name='query' class="userSearchField" value="<%=params[:query]%>"> 
+                <img src="/assets/users/images/icon-user-search-field.png" style="position:absolute; right:0; top:0;">
+                <div class="selectDiv">
+                 <select name='search_on' id="search_on" class="select" title="Select one">
             <option selected value='all'>all columns</option>
-            <option  value='customer_email'>Customer</option>
-            <option  value='grand_total'>Total</option>
+            <option value='customer_email'>Customer</option>
+            <option value='grand_total'>Total</option>
           </select>
-        </div>
-         <div class="rcBlue2">
-        <div class="rcBlack2">
-          <span>Smith</span>
-          <span class="deletetag_disabled">&nbsp;</span>
-        </div>
-      </div>
+                </div>
+                <div class="rcBlue2">
+                  <div class="rcBlack2">
+                    <span>Smith</span>
+                    <span class="deletetag_disabled">&nbsp;</span>
+                  </div>
+                </div>
 
-      <div class="rcBlue2">
-        <div class="rcBlack2">
-          <span>Admin</span>
-          <span class="deletetag_disabled">&nbsp;</span>
-        </div>
-      </div>
-
-   
+                <div class="rcBlue2">
+                  <div class="rcBlack2">
+                    <span>Admin</span>
+                    <span class="deletetag_disabled">&nbsp;</span>
+                  </div>
+                </div>
               </div>
-              <div class="userPanelDevider">
-              </div>
-              <!-- slider rc -->
+              <div class="clear"></div>
+              <div class="clearHeight10"></div>
+            </div>
+            
+            <div class="userPanelDevider"></div>
+            
+            <!-- slider rc -->
     <% # init current month n year
        _c_m = DateTime.now.month.to_s
        _c_y = DateTime.now.year.to_s
@@ -71,7 +75,8 @@
       <div class="clear"></div>
       <div class="clearHeight10"></div>
     </div><!-- end of rc slider -->
-            <div class="userPanelDevider">
+            
+    <div class="userPanelDevider">
             </div>
             <div class="userPanel">
                 <div class="showRoles">
@@ -123,8 +128,7 @@
                     </span>
                 </div>
             </div>
-            </form>
-            </div>
+    
         </div>
         <div class="site-users left">
             <div class="addNewUserBtn">

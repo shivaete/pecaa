@@ -16,7 +16,9 @@
 	left:0;
 }
 /*end common */
-
+.rcPaleBlue {
+	float:left; width:215px; background-color:#f2f6f8; border-radius:5px; -moz-border-radius:5px;
+}
 
 .rcBlue2 {
 	float:left; height:25px; background-color:#bbcfe2; padding:0px 0px 0px 0px; border-radius:5px; -moz-border-radius:5px; color:#ffffff; margin:0 2px 5px 2px;

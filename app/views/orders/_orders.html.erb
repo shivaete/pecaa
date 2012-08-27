@@ -1,0 +1,14 @@
+<ul class="ConLibra">
+  <% @orders.each do |order| %>
+    <li class="alt" onclick="show_order('<%=order.id%>')">
+      <span class="dateCol"><span class="pointer" style="display: none;"></span><%=order.order_id%></span>
+      <span class="dateCol"><%=order.created_at.strftime("%y/%m/%d")%></span>
+      <span class="dateCol"><%=order.status%></span>
+      <span class="dateCol"><%=order.pay_status%></span>
+      <span class="dateCol"><%=order.ship_status%></span>
+      <span class="customCol"><%=order.customer_email%></span>
+      <span class="dateCol"><%=order.grand_total%></span>
+      <span class="dateCol"><%=link_to "Edit","/sites/#{params[:site_id]}/orders/#{order.id}/edit",:onclick => "window.location.href='/sites/#{params[:site_id]}/orders/#{order.id}/edit'"%></span>
+    </li>
+  <%end %>
+</ul>
