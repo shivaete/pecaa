@@ -16,6 +16,37 @@
 	left:0;
 }
 /*end common */
+
+
+.rcBlue2 {
+	float:left; height:25px; background-color:#bbcfe2; padding:0px 0px 0px 0px; border-radius:5px; -moz-border-radius:5px; color:#ffffff; margin:0 2px 5px 2px;
+}
+
+.rcBlue2 span {
+	line-height:25px; padding:0px 10px 0px 5px; color:#666666;
+}
+
+.rcBlack2 {
+	float:left; width:auto; background-color:#666666; padding:0px 10px 0px 5px; height:25px; border-radius:5px; -moz-border-radius:5px; line-height:25px; margin: 0 2px;
+}
+
+.rcBlack2 span {
+	float:left; line-height:25px; color:#ffffff;
+}
+
+
+.deletetag_active {
+    background:url(img/btn_deleteUser_active.png) no-repeat left center;
+}
+
+.deletetag_disabled {
+    background:url(img/btn_deleteUser_disabled.png) no-repeat left center;
+}
+
+.rcBlack2 img {
+	float:left; margin:5px 0px 0px 0px;
+}
+
 .userSearchField {
 	position:absolute; left:0; width:180px; height:34px; border:none; background:url(../assets/user-search-field-bg.png) no-repeat left top; padding:0px 40px 0px 5px; top:0px;
 }
@@ -1965,4 +1996,27 @@ z-index:300;
 	background:#666;
 	color:#FFF;
 	overflow:hidden;
+}
+.searchOptions .edate-slider, .searchOptions .cdate-slider {
+    background: -moz-linear-gradient(left center , #000000, #CCCCCC) repeat scroll 0 0 transparent;
+    border: 1px solid #666666;
+    border-radius: 4px 4px 4px 4px;
+    height: 5px;
+    margin: 10px 10px 20px;
+    position: relative;
+    width: 180px;
+}
+
+.searchOptions .anoption {
+    margin-bottom: 25px;
+    overflow: auto;
+}
+.searchOptions .anoption span.dte_to, .searchOptions .anoption span.dtc_to, .searchOptions .anoption span.dtp_to, .searchOptions .anoption span.dt_to {
+    padding-left: 40px;
+}
+.searchOptions span, .searchMiscOptions span {
+    display: inline-block;
+}
+.searchOptions span.label, .searchMiscOptions span.label {
+    float: none;
 }

@@ -94,4 +94,58 @@ class OrdersController < ApplicationController
     @order_note = @order.order_notess.create(:description => params[:desc],:created_by => current_user.id)
     render :layout => false
   end
+  
+  
+  def search
+    search_on = ''
+    q = {}
+    and_flag = false
+    
+    if !params[:query].blank?
+      if params[:search_on] == 'all'
+        search_on += '(order_id LIKE :q or customer_email LIKE :q or grand_total LIKE :q)'
+        q.merge!({:q=>"%#{params[:query]}%"});
+      else
+        search_on += params[:search_on]+' LIKE :q'
+        q.merge!({:q=>"%#{params[:query]}%"});
+      end
+      and_flag = true
+    end
+    
+    if params[:total] == 'on'
+      search_on += (and_flag ? ' AND ': '') + 'grand_total >= :total_amount_from AND grand_total <= :total_amount_to'
+      q.merge!({:total_amount_from=> params[:from_total] })
+      q.merge!({:total_amount_to=> params[:to_total] })
+      and_flag = true
+    end
+    
+    if params[:date_created] == 'on'
+      search_on += (and_flag ? ' AND ': '') + 'created_at >= :date_created_from AND created_at <= :date_created_to'
+      q.merge!({:date_created_from=>Date.strptime(params[:date_created_from],'%Y-%m-%d')})
+      q.merge!({:date_created_to=>Date.strptime(params[:date_created_to],'%Y-%m-%d')})
+      and_flag = true
+    end
+    
+     if params[:status] and !params[:status].blank?
+      search_on += (and_flag ? ' AND ': '') + 'status = :status'
+      q.merge!({:status=>params[:status]})
+      and_flag = true
+    end
+    
+    if !current_user.role?('SuperAdmin')
+      search_on += (and_flag ? ' AND ': '') + 'site_id = :site_id'
+      q.merge!({:site_id=>params[:site_id]})
+    end
+    
+    
+    @orders = Order.where("#{search_on} ", q)
+    
+    respond_to do |format|
+      format.html {render :action => 'index'}
+      format.json { render json: @order }
+      format.js {}
+    end
+    
+  end
+  
 end
