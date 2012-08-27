@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
   end
   
   def new
+    @product_categories = ProductCategory.find(:all)
     @product = @site.products.create(:name =>"new product")
   end
   
