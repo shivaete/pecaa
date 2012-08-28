@@ -16,7 +16,7 @@ set :keep_releases, 3
 ssh_options[:forward_agent] = true
 
 set :scm_verbose, true
-#set :deploy_via, :remote_cache
+set :deploy_via, :remote_cache
 
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 role :app, domain                          # This may be the same as your `Web` server
