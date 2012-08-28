@@ -1,4 +1,5 @@
 # PECAA deployment file, no mods should be done without authentication from Jake/pecaa leads
+#Jake deployment 08/28/2012
 set :application, "Pecaa"
 set :repository,  "git@github.com:pecaaspree/pecaa.git"
 set :scm, :git
