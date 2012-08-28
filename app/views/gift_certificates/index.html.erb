@@ -1,10 +1,11 @@
+<form action="/sites/<%=params[:site_id]%>/gift_certificates" method="get" name="searchbox" id='searchbox'>
       <div class="pages-main">
         <div class="pages-wrapper couponWrapper">
           <div class="usersLeftPane left">
             <div class="title">manage gift certificates <span class="help"><a href="#"></a></span></div>
             <div class="userPanel">
               <div class="searchUser">
-                <form action="/sites/<%=params[:site_id]%>/gift_certificates" method="get" name="searchbox" id='searchbox'>
+
 		             <span class="searchInput left">
 		          		<input type="text" name='query' placeholder="search">
 		             </span>
@@ -22,7 +23,7 @@
 							<img border="0" src="/assets/btnDropDownSelectColum.png"> 
 						</span>-->
 			        </span>
-           		</form>
+
               </div>
               <span class="showUser clear"><span class="userLastname">205 <img src="/assets/btn_deleteUser_disabled.png"></span><span class="user-label">value</span></span> <span class="showUser clear"><span class="userLastname">james <img src="/assets/btn_deleteUser_active.png"></span><span class="user-label">purchased by</span></span> 
             </div>
@@ -33,18 +34,55 @@
                 <span id="" class="checkbox" style="background-position: 0pt -50px;"></span>
                 <label for="shareThis">amount</label>
               </div>
-              <div class="rangeSlider"><img width="212" height="22" src="/assets/sideBar.png"></div>
+              <div class="rangeSlider">
+                <div class="palletBox">
+                <div class="boxShadow right">
+                  <div class="slider-boxShadow left" id='boxshadow'>
+                    <div class="pointStart"><span class="col"></span><span class="val" id='box_shadow_val1'>0</span></div>
+                    <div class="pointEnd"><span class="col"></span><span class="val" id='box_shadow_val2'>1000,000</span></div>
+                    <%=hidden_field :search,:amount%>
+                  </div>
+                </div>
+                </div>
+
+              </div>
               
-               <div class="date-created">
+               <div class="date-created" style="width: 100%">
                 <span id="" class="checkbox" style="background-position: 0pt -50px;"></span>
                 <label for="shareThis">date created</label>
               </div>
-              <div class="rangeSlider"><img width="212" height="22" src="/assets/sideBar.png"></div>
+
+              <div class="rangeSlider">
+                <div class="palletBox">
+                  <div class="boxShadow right">
+                    <div class="slider-boxShadow left" id='date_created'>
+                      <div class="pointStart"><span class="col"></span><span class="val" id='startDate'>01/09/1950</span></div>
+                      <div class="pointEnd"><span class="col"></span><span class="val" id='endDate'>08/31/2012</span></div>
+                      <%=hidden_field :search,:created_at%>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
               
-              <div class="last-activity">
-                <span id="lastActivityVal" class="checkbox" style="background-position: 0pt 0pt;"></span>
+               <div class="date-created" style="width: 100%">
+                <span id="" class="checkbox" style="background-position: 0pt -50px;"></span>
                 <label for="lastActivityVal">date expired</label>
               </div>
+
+              <div class="rangeSlider">
+                <div class="palletBox">
+                  <div class="boxShadow right">
+                    <div class="slider-boxShadow left" id='date_expired'>
+                      <div class="pointStart"><span class="col"></span><span class="val" id='ex_startDate'>01/09/1950</span></div>
+                      <div class="pointEnd"><span class="col"></span><span class="val" id='ex_endDate'>08/31/2060</span></div>
+                      <%=hidden_field :search,:expired_date%>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
             </div>
             <div class="userPanelDevider"></div>
             <div class="userPanel">
@@ -87,7 +125,7 @@
                         <ul class="ConLibra">
                          <!-- <li> <span class="productName"><span class="pointer"></span> sunglases<span class="status"><img src="/assets/btnMarkNo.png" border="0" /></span></span> <span class="sku">Group X</span> <span class="created">08/12/11</span> <span class="vendor">08/12/11</span> <span class="sold">08/12/11</span> <span class="viewed">08/12/11</span> </li>-->
                           	<%@gift_certificates.all.each do |gf|%>
-	                          <li class="alt"> <span class="certificateText"><%=gf.certificate_id%></span><span class="createdDate"><%=gf.created_at.strftime('%y/%m/%d')%></span><span class="expiresText"><%=gf.created_at.strftime('%y/%m/%d')%></span><span class="purchasedByText">James</span> <span class="assignedData"><%=User.find(gf.assigned_to).username rescue ''%></span> <span class="valueText"><%=gf.value%></span><span class="remainingText">$205.00</span> <span class="approvedText"><span onclick="window.location.href='/sites/<%=params[:site_id]%>/gift_certificates/<%=gf.id%>/approve'"><input type="checkbox" id="shareThis" <%= gf.status ? "checked='yes'" : ''%> class="styled"></span></span><span><a href="/sites/<%=params[:site_id]%>/gift_certificates/<%=gf.id%>" method="delete"> <img border="0" src="/assets/btnDelete.png"></a></span> </li>
+	                          <li class="alt"> <span class="certificateText"><%=gf.certificate_id%></span><span class="createdDate"><%=gf.created_at.strftime('%m/%d/%Y')%></span><span class="expiresText"><%=gf.expired_date.strftime('%m/%d/%Y') if gf.expired_date%></span><span class="purchasedByText">James</span> <span class="assignedData"><%=User.find(gf.assigned_to).username rescue ''%></span> <span class="valueText"><%=gf.value%></span><span class="remainingText">$205.00</span> <span class="approvedText"><span onclick="window.location.href='/sites/<%=params[:site_id]%>/gift_certificates/<%=gf.id%>/approve'"><input type="checkbox" id="shareThis" <%= gf.status ? "checked='yes'" : ''%> class="styled"></span></span><span><a href="/sites/<%=params[:site_id]%>/gift_certificates/<%=gf.id%>" method="delete"> <img border="0" src="/assets/btnDelete.png"></a></span> </li>
 
 							<%end%>  
 
@@ -101,8 +139,89 @@
           </div>
         </div>
       </div>
+</form>
     <script type="text/javascript">
 			$(document).ready(function(){
         		$('#products1').tinyscrollbar();
+
+                $( "#boxshadow" ).slider({
+                    orientation: "horizontal",
+                    range:true,
+                    min: 0,
+                    max: 1000000,
+                    values: [1, 1000000],
+                    slide: refreshShadow,
+                    change: refreshShadow,
+                    stop: searchfn});
+
+                function refreshShadow() {
+                    var val1 = $("#boxshadow").slider("values")[0];
+                    var val2 = $("#boxshadow").slider("values")[1];
+                    $("#box_shadow_val1").text(val1);
+                    $("#box_shadow_val2").text(val2);
+                    $("#search_amount").attr('value', val1+" "+val2);
+
+                    $('.text-box-style').css('box-shadow', val1+" "+val2)
+
+                }
+                function searchfn() {
+                    var val1 = $("#boxshadow").slider("values")[0];
+                    var val2 = $("#boxshadow").slider("values")[1];
+                    $("#box_shadow_val1").text(val1);
+                    $("#box_shadow_val2").text(val2);
+                    $("#search_amount").attr('value', val1+" "+val2);
+
+                    $('.text-box-style').css('box-shadow', val1+" "+val2)
+
+                    $('#searchbox').submit();
+                }
+
 			});
-	</script>
+
+            $(function() {
+                var minDate = new Date(1950, 1-1, 1);
+                var maxDate = new Date(2012, 8-1, 31);
+                $('#date_created').slider({
+                    range: true,
+                    max: Math.floor((maxDate.getTime() - minDate.getTime()) / 86400000),
+                    slide: function(event, ui) {
+                        var date = new Date(minDate.getTime());
+                        date.setDate(date.getDate() + ui.values[0]);
+                        $('#startDate').text($.datepicker.formatDate('mm/dd/yy', date));
+                        date = new Date(minDate.getTime());
+                        date.setDate(date.getDate() + ui.values[1]);
+                        $('#endDate').text($.datepicker.formatDate('mm/dd/yy', date));
+                    },
+                    stop: searchdtfn});
+                function searchdtfn() {
+
+                    $("#search_created_at").attr('value', $('#startDate').first().html()+" "+$('#endDate').first().html());
+                    $('#searchbox').submit();
+                }
+
+
+            });
+
+            $(function() {
+                var minDate = new Date(1950, 1-1, 1);
+                var maxDate = new Date(2050, 8-1, 31);
+                $('#date_expired').slider({range: true,
+                    max: Math.floor((maxDate.getTime() - minDate.getTime()) / 86400000),
+                    slide: function(event, ui) {
+                        var date = new Date(minDate.getTime());
+                        date.setDate(date.getDate() + ui.values[0]);
+                        $('#ex_startDate').text($.datepicker.formatDate('mm/dd/yy', date));
+                        date = new Date(minDate.getTime());
+                        date.setDate(date.getDate() + ui.values[1]);
+                        $('#ex_endDate').text($.datepicker.formatDate('mm/dd/yy', date));
+                    },
+                    stop: searchexdtfn});
+                function searchexdtfn() {
+
+                    $("#search_expired_date").attr('value', $('#ex_startDate').first().html()+" "+$('#ex_endDate').first().html());
+                    $('#searchbox').submit();
+                }
+
+            });
+
+    </script>
