@@ -6,7 +6,7 @@ set :user, "jmunta"
 set :database, "mysql"
 set :deploy_to, "/home/jmunta/pecaa_web_app"
 set :domain, "50.97.78.218"
-set :branch, "master"
+set :branch, "pecaa_deployment"
 set :runner, user
 set :admin_runner, user
 set :use_sudo,false
