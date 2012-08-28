@@ -12,17 +12,14 @@
 		             <span class="addSearch left">
 						<img border="0" src="/assets/btn_AddNewSearch.png">
 					</span>
-			        <span class="selectColumns clear">
-			            <select name='search_on'class="select" title="Select one" style="border: 0; background: none; width:96%;">
-			              <option value='certificate_id'>Cert ID</option>
-			              <option value='purchased_by'>Purchased By</option>
-			              <option value='assigned_to'>Assigned To</option>
-			              <option selected value='value'>Value</option>
-			            </select>
-			           <!--  <span class="btnDown right">
-							<img border="0" src="/assets/btnDropDownSelectColum.png"> 
-						</span>-->
-			        </span>
+			        <div class="selectDiv clear" style="top: -3px; left: 0;">
+			          <select name='search_on'class="select" title="Select one">
+			            <option selected value='all'>all columns</option>
+			            <option value='name'>Name</option>
+			            <option value='vendor'>Vendor Name</option>
+			            <option value='sku'>SKU</option>
+			          </select>
+				  </div>
 
               </div>
               <span class="showUser clear"><span class="userLastname">205 <img src="/assets/btn_deleteUser_disabled.png"></span><span class="user-label">value</span></span> <span class="showUser clear"><span class="userLastname">james <img src="/assets/btn_deleteUser_active.png"></span><span class="user-label">purchased by</span></span> 
