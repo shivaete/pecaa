@@ -1,3 +1,5 @@
+# PECAA deployment file, no mods should be done without authentication from Jake/pecaa leads
+#Jake deployment 08/28/2012
 set :application, "Pecaa"
 set :repository,  "git@github.com:pecaaspree/pecaa.git"
 set :scm, :git
@@ -5,7 +7,7 @@ set :user, "jmunta"
 set :database, "mysql"
 set :deploy_to, "/home/jmunta/pecaa_web_app"
 set :domain, "50.97.78.218"
-set :branch, "master"
+set :branch, "pecaa_deployment"
 set :runner, user
 set :admin_runner, user
 set :use_sudo,false
@@ -14,7 +16,7 @@ set :keep_releases, 3
 ssh_options[:forward_agent] = true
 
 set :scm_verbose, true
-set :deploy_via, :remote_cache
+#set :deploy_via, :remote_cache
 
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 role :app, domain                          # This may be the same as your `Web` server

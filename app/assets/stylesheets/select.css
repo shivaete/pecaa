@@ -3,6 +3,7 @@
 
 /* all form DIVs have position property set to relative so we can easily position newly created SPAN */
 .selectDiv{position:relative; top:-19px; left:-5px;} 
+.selectDivOrder{position:relative;} 
 
 /* setting the width and height of the SELECT element to match the replacing graphics */
 select.select{

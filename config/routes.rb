@@ -107,6 +107,7 @@ Mystore3::Application.routes.draw do
       get 'product_list', :on => :member
       get 'notes_and_history', :on => :member
       get 'create_notes', :on => :member
+      post 'search', :on => :collection
     end
     resources :reports do
       get 'graph_index', :on => :collection

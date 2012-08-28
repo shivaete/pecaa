@@ -13,7 +13,7 @@
     </div>
     <div class="userDetailSet">
         <span class="key">status :</span>
-        <span class="val"><%=@order.status %></span>
+        <span class="val"><%= @order.status %></span>
     </div>
     <div class="userDetailSet">
         <span class="key">paid status :</span>
@@ -31,7 +31,7 @@
         <button class="secondary left">
             view customer
         </button>
-        <button class="secondary right">
+        <button  id="all_orders" class="secondary right">
             view all orders
         </button>
     </div>
@@ -69,3 +69,34 @@
         </button>
     </div>
 </div>
+
+<script type="text/javascript">
+
+  $("#all_orders").click(function(e) {
+    
+    email = "<%= @order.customer_email %>";
+    site_id = "<%= @order.site_id %>";
+    search_orders(email,site_id);
+    /*e.preventDefault();
+       */
+  });
+  
+  
+  function search_orders(email,site_id)
+  {
+    var search_Data = {
+            'search_on' : 'customer_email',
+            'query' : email
+        }
+        $.ajaxSetup({
+            data : search_Data
+        });
+        url = "/sites/"+site_id+"/orders/search.js"
+  $.post(url,
+        function(data){
+          },"script");
+  }
+
+</script>
+
+

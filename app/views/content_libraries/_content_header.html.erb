@@ -1,13 +1,13 @@
 <div class="content-tabs">
 	<ul>
 		<%params[:search]||={}%>
-		<li class="<%= params[:search][:source_type_equals].blank? ? 'active' : ''%>"><a href="/sites/<%=@site.id%>/site_pages/<%=params[:site_page_id]%>/content_libraries/search" style="text-decoration:none;color:#fff">Search</a></li>
-		<li class="<%= params[:search][:source_type_equals] == 'Text' ? 'active' : ''%>" ><a href="/sites/<%=@site.id%>/site_pages/<%=params[:site_page_id]%>/content_libraries/search?search[source_type_equals]=Text" style="text-decoration:none;color:#fff">Text</a></li>
-		<li class="<%= params[:search][:source_type_equals] == 'AddForm' ? 'active' : ''%>"><a href="/sites/<%=@site.id%>/site_pages/<%=params[:site_page_id]%>/content_libraries/search?search[source_type_equals]=AddForm" style="text-decoration:none;color:#fff">Forms</a></li>
-		<li class="<%= params[:search][:source_type_equals] == 'Image' ? 'active' : ''%>"><a href="/sites/<%=@site.id%>/site_pages/<%=params[:site_page_id]%>/content_libraries/search?search[source_type_equals]=Image" style="text-decoration:none;color:#fff">Images</a></li>
-		<li class="<%= params[:search][:source_type_equals] == 'Video' ? 'active' : ''%>"><a href="/sites/<%=@site.id%>/site_pages/<%=params[:site_page_id]%>/content_libraries/search?search[source_type_equals]=Video" style="text-decoration:none;color:#fff">Video</a></li>
-		<li class="<%= params[:search][:source_type_equals] == 'File' ? 'active' : ''%>"><a href="/sites/<%=@site.id%>/site_pages/<%=params[:site_page_id]%>/content_libraries/search?search[source_type_equals]=File" style="text-decoration:none;color:#fff">Docs</a></li>
-		<li class="<%= params[:search][:source_type_equals] == 'Misc' ? 'active' : ''%>"><a href="/sites/<%=@site.id%>/site_pages/<%=params[:site_page_id]%>/content_libraries/search?search[source_type_equals]=Misc" style="text-decoration:none;color:#fff">Misc</a></li>
+		<li class="<%= params[:search][:source_type_equals].blank? ? 'active' : ''%>"><a href="/sites/<%=@site.id%>/site_pages/<%=params[:site_page_id]%>/content_libraries/search" style="text-decoration:none;color:#fff" class="content_hdr_link">Search</a></li>
+		<li class="<%= params[:search][:source_type_equals] == 'Text' ? 'active' : ''%>" ><a href="/sites/<%=@site.id%>/site_pages/<%=params[:site_page_id]%>/content_libraries/search?search[source_type_equals]=Text" style="text-decoration:none;color:#fff" class="content_hdr_link">Text</a></li>
+		<li class="<%= params[:search][:source_type_equals] == 'AddForm' ? 'active' : ''%>"><a href="/sites/<%=@site.id%>/site_pages/<%=params[:site_page_id]%>/content_libraries/search?search[source_type_equals]=AddForm" style="text-decoration:none;color:#fff" class="content_hdr_link">Forms</a></li>
+		<li class="<%= params[:search][:source_type_equals] == 'Image' ? 'active' : ''%>"><a href="/sites/<%=@site.id%>/site_pages/<%=params[:site_page_id]%>/content_libraries/search?search[source_type_equals]=Image" style="text-decoration:none;color:#fff" class="content_hdr_link">Images</a></li>
+		<li class="<%= params[:search][:source_type_equals] == 'Video' ? 'active' : ''%>"><a href="/sites/<%=@site.id%>/site_pages/<%=params[:site_page_id]%>/content_libraries/search?search[source_type_equals]=Video" style="text-decoration:none;color:#fff" class="content_hdr_link">Video</a></li>
+		<li class="<%= params[:search][:source_type_equals] == 'File' ? 'active' : ''%>"><a href="/sites/<%=@site.id%>/site_pages/<%=params[:site_page_id]%>/content_libraries/search?search[source_type_equals]=File" style="text-decoration:none;color:#fff" class="content_hdr_link">Docs</a></li>
+		<li class="<%= params[:search][:source_type_equals] == 'Misc' ? 'active' : ''%>"><a href="/sites/<%=@site.id%>/site_pages/<%=params[:site_page_id]%>/content_libraries/search?search[source_type_equals]=Misc" style="text-decoration:none;color:#fff" class="content_hdr_link">Misc</a></li>
 	</ul>
 	<%=form_for '/content_libraries/search',:id=>"search",:method=>"get" do%>
 	<div class="searchContent">
