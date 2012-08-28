@@ -56,8 +56,8 @@
         <div class="anoption">
             <input type=checkbox id="last_edited" name="last_edited" ><span class="label">last edited</span>  <!-- class="styled"  -->
             <div class="edate-slider" id='dteRange'>
-              <%=hidden_field_tag :last_edited_from%>
-              <%=hidden_field_tag :last_edited_to%>
+              <%=hidden_field_tag :last_edited_from,_c_y+'-'+_c_m+'-7' %>
+              <%=hidden_field_tag :last_edited_to, _c_y+'-'+_c_m+'-16' %>
             </div>
             <div class="rangedisplay">
               <span class="dte_from">From: <%=_c_m+'/7/'+_c_y%></span>
@@ -67,8 +67,8 @@
         <div class="anoption">
             <input type=checkbox id="date_created" name="date_created" ><span class="label">date created</span>
             <div class="cdate-slider" id='dtcRange'>
-              <%=hidden_field_tag :date_created_from%>
-              <%=hidden_field_tag :date_created_to%>
+              <%=hidden_field_tag :date_created_from,_c_y+'-'+_c_m+'-7' %>
+              <%=hidden_field_tag :date_created_to, _c_y+'-'+_c_m+'-16' %>
             </div>
             <div class="rangedisplay">
               <span class="dtc_from">From: <%=_c_m+'/7/'+_c_y%></span>
