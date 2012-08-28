@@ -1,12 +1,23 @@
-<div class="content-section">
       <div class="pages-main">
         <div class="pages-wrapper couponWrapper">
           <div class="usersLeftPane left">
             <div class="title">custom report <span class="help"><a href="#"></a></span></div>
             <div class="userPanel">
-              <div class="searchUser"> <span class="searchInput left"><input type="text" placeholder="search"></span> 
-              	<span class="addSearch left"><img border="0" src="/assets/btn_AddNewSearch.png"></span> <span class="selectColumns clear"><span class="columnText">all columns</span><span class="btnDown right"><img border="0" src="/assets/btnDropDownSelectColum.png"></span></span> </div>
+              <div class="searchUser"> 
+              	<span class="searchInput left"><input type="text" placeholder="search"></span> 
+              	<span class="addSearch left"><img border="0" src="/assets/btn_AddNewSearch.png"></span> 
+              </div>
+              <div class="selectDiv clear" style="top: -3px; left: 0;">
+		          <select name='search_on'class="select" title="Select one">
+		            <option selected value='all'>all columns</option>
+		            <option value='name'>Name</option>
+		            <option value='vendor'>Vendor Name</option>
+		            <option value='sku'>SKU</option>
+		          </select>
+			  </div>
+			  <div class="clear">
               	<span class="showUser clear"><span class="userLastname">205 <img src="/assets/btn_deleteUser_disabled.png"></span><span class="user-label">value</span></span> 
+            	</div>
             </div>
             <div class="userPanelDevider"></div>
             <div class="userPanel productp">
@@ -108,17 +119,14 @@
                 </div>
                 <div class="userGridFooter showVals">
                 	<ul class="totals">
-                    <li> 
-                    
-					</li>
-                  </ul>
+	                    <li></li>
+                  	</ul>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 <script>
 	$(document).ready(function(){
 		$('#products1').tinyscrollbar();

@@ -12,7 +12,8 @@ gem "rake", "0.9.2.2"
 gem 'paperclip'
 
 gem 'json'
-
+gem 'prawn'
+gem 'prawnto'
 gem 'meta_search'
 gem 'country-select'
 gem "state_select"

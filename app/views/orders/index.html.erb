@@ -1,85 +1,134 @@
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css"/>
+    <%= stylesheet_link_tag "layout", "controlTabLayout"%>
+    <%= stylesheet_link_tag "select" %>
+    <%= stylesheet_link_tag "tabs" %>
+    <%= stylesheet_link_tag "prettyCheckboxes" %>
+    <%= stylesheet_link_tag "website" %>
+    <%= stylesheet_link_tag "facebox" %>
 <div class="pages-main">
     <div class="pages-wrapper">
         <div class="usersLeftPane left" id="show_order_list">
             <div class="title">
                 manage orders <span class="help"><a href="#"></a></span>
             </div>
-            <div class="userPanel">
-                <div class="searchUser">
-                    <span class="searchInput left"><input type="text" placeholder="search"></span><span class="addSearch left"><img border="0" src="/assets/btn_AddNewSearch.png"></span><span class="selectColumns clear"><span class="columnText">all columns</span><span class="btnDown right"><img border="0" src="/assets/btnDropDownSelectColum.png"></span></span>
-                </div><span class="showUser clear"><span class="userLastname">smith <img src="/assets/btn_deleteUser_active.png"></span><span class="user-label">name</span></span>
-                <span class="showUser clear"><span class="userLastname">admin X <img src="/assets/btn_deleteUser_disabled.png"></span><span class="user-label">role</span></span>
+            <div class="userSearch">
+              <div class="rcPaleBlue" style="padding:50px 5px 10px 5px; position:relative;">
+                <input type="text" name='query' class="userSearchField" value="<%=params[:query]%>"> 
+                <img src="/assets/users/images/icon-user-search-field.png" style="position:absolute; right:0; top:0;">
+                <div class="selectDiv">
+                 <select name='search_on' id="search_on" class="select" title="Select one">
+            <option selected value='all'>all columns</option>
+            <option value='customer_email'>Customer</option>
+            <option value='grand_total'>Total</option>
+          </select>
+                </div>
+                <div class="rcBlue2">
+                  <div class="rcBlack2">
+                    <span>Smith</span>
+                    <span class="deletetag_disabled">&nbsp;</span>
+                  </div>
+                </div>
+
+                <div class="rcBlue2">
+                  <div class="rcBlack2">
+                    <span>Admin</span>
+                    <span class="deletetag_disabled">&nbsp;</span>
+                  </div>
+                </div>
+              </div>
+              <div class="clear"></div>
+              <div class="clearHeight10"></div>
             </div>
-            <div class="userPanelDevider">
+            
+            <div class="userPanelDevider"></div>
+            
+            <!-- slider rc -->
+    <% # init current month n year
+       _c_m = DateTime.now.month.to_s
+       _c_y = DateTime.now.year.to_s
+    %>
+<div class="userPanel">
+  <div class="searchOptions">
+        <div class="anoption">
+            <input type="checkbox" id="total" name="total" ><span class="label">total</span>  <!-- class="styled"  -->
+            <div class="edate-slider" id='total_amount'>
+              <%=hidden_field_tag :from_total%>
+              <%=hidden_field_tag :to_total%>
             </div>
-            <div class="userPanel productp">
-                <div class="date-created">
-                    <span id="" class="checkbox" style="background-position: 0pt 0pt;"></span>
-                    
-                    <label for="shareThis">
-                        total
-                    </label>
-                </div>
-                <div class="rangeSlider">
-                    <img width="212" height="22" src="/assets/sideBar.png">
-                </div>
-                <div class="last-activity">
-                    <span id="lastActivityVal" class="checkbox" style="background-position: 0pt 0pt;"></span>
-                    
-                    <label for="lastActivityVal">
-                        date placed
-                    </label>
-                </div>
-                <div class="rangeSlider">
-                    <img width="212" height="22" src="/assets/sideBar.png">
-                </div>
+            <div class="rangedisplay">
+              <span class="tot_from">From: $ 1.00</span>
+              <span class="tot_to">To: $ 1000.00</span>
             </div>
-            <div class="userPanelDevider">
+        </div>
+        <div class="anoption">
+            <input type="checkbox" id="date_created" name="date_created" ><span class="label">date placed</span>
+            <div class="cdate-slider" id='dtcRange'>
+              <%=hidden_field_tag :date_created_from %>
+              <%=hidden_field_tag :date_created_to %>
+            </div>
+            <div class="rangedisplay">
+              <span class="dtc_from">From: <%=_c_m+'/7/'+_c_y%></span>
+              <span class="dtc_to">To: <%=_c_m+'/16/'+_c_y%></span>
+            </div>
+        </div>
+      </div>
+      <div class="clear"></div>
+      <div class="clearHeight10"></div>
+    </div><!-- end of rc slider -->
+            
+    <div class="userPanelDevider">
             </div>
             <div class="userPanel">
                 <div class="showRoles">
-                    <span class="val"><span id="" class="radio" style="background-position: 0pt 0pt;"></span></span><span class="key">
+                    <span class="val">
+                      <input type="radio" class="status" id="status" name="status" value="paid" >
                         <label>
                             paid
                         </label>
                     </span>
                 </div>
                 <div class="showRoles">
-                    <span class="val"><span id="" class="radio" style="background-position: 0pt 0pt;"></span></span><span class="key">
+                    <span class="val">
+                      <input type="radio" class="status" id="status" name="status" value="complete" >
                         <label>
                             complete
                         </label>
                     </span>
                 </div>
                 <div class="showRoles">
-                    <span class="val"><span id="" class="radio" style="background-position: 0pt 0pt;"></span></span><span class="key">
+                    <span class="val">
+                      <input type="radio" class="status" id="status" name="status" value="in progress" >
                         <label>
                             in progress
                         </label>
                     </span>
                 </div>
                 <div class="showRoles">
-                    <span class="val"><span id="" class="radio" style="background-position: 0pt 0pt;"></span></span><span class="key">
+                    <span class="val">
+                      <input type="radio" class="status"  id="status" name="status" value="on hold" >
                         <label>
                             on hold
                         </label>
                     </span>
                 </div>
                 <div class="showRoles">
-                    <span class="val"><span id="" class="radio" style="background-position: 0pt 0pt;"></span></span><span class="key">
+                    <span class="val">
+                      <input type="radio" class="status" id="status" name="status" value="shipped" >
                         <label>
                             shipped
                         </label>
                     </span>
                 </div>
                 <div class="showRoles">
-                    <span class="val"><span id="" class="radio" style="background-position: 0pt 0pt;"></span></span><span class="key">
+                    <span class="val">
+                        <input type="radio" class="status" id="status" name="status" value="cancelled" >
                         <label>
                             cancelled
                         </label>
                     </span>
                 </div>
             </div>
+    
         </div>
         <div class="site-users left">
             <div class="addNewUserBtn">
@@ -115,21 +164,8 @@
                                     <span class="topShadow"></span>
                                     <span class="bottomShadow"></span>
                                 </div>
-                                <div class="overview leftMargin" style="top: 0px;">
-                                    <ul class="ConLibra">
-                                        <%Order.all.each do |order| %>
-                                        <li class="alt" onclick="show_order('<%=order.id%>')">
-                                            <span class="dateCol"><span class="pointer" style="display: none;"></span><%=order.order_id%></span>
-                                            <span class="dateCol"><%=order.created_at.strftime("%y/%m/%d")%></span>
-                                            <span class="dateCol"><%=order.status%></span>
-                                            <span class="dateCol"><%=order.pay_status%></span>
-                                            <span class="dateCol"><%=order.ship_status%></span>
-                                            <span class="customCol"><%=order.customer_email%></span>
-                                            <span class="amtCol">250</span>
-											<span class="dateCol"><%=link_to "Edit","/sites/#{params[:site_id]}/orders/#{order.id}/edit",:onclick => "window.location.href='/sites/#{params[:site_id]}/orders/#{order.id}/edit'"%></span>
-                                        </li>
-                                        <%end %>
-                                    </ul>
+                                <div class="overview leftMargin" id="order_data" style="top: 0px;">
+                                  <%= render :partial => 'orders' %>
                                 </div>
                             </div>
                         </div>
@@ -141,9 +177,48 @@
         </div>
     </div>
 </div>
+<%= javascript_include_tag '/assets/users/scripts/data_picker_setting.js'%>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#orders1').tinyscrollbar();
+       $( '#dtcRange' ).slider({
+            range: true,
+            min: 1,
+            max: 31,
+            values: [ 7, 16 ],
+            slide: function( event, ui ) {
+                // calculate the date range
+                var dt = new Date(),
+                        _y = dt.getFullYear(),
+                        _m = dt.getMonth()+1;
+                // now to display it
+                $('.rangedisplay .dtc_from').html('From: '+_m+'/'+ui.values[0]+'/'+_y);
+                $('.rangedisplay .dtc_to').html('To: '+_m+'/'+ui.values[1]+'/'+_y);
+                // now save it for manipulation
+                $('#date_created_from').attr('value',_y+'-'+_m+'-'+ui.values[0]);
+                $('#date_created_to').attr('value',_y+'-'+_m+'-'+ui.values[1]);
+                
+                search_orders();
+            }
+        });
+        
+          $( '#total_amount' ).slider({
+            range: true,
+            min: 1,
+            max: 1000,
+            values: [ 7, 16 ],
+            slide: function( event, ui ) {
+                // calculate the date range
+                // now to display it
+                $('.rangedisplay .tot_from').html('From: $ '+ui.values[0]+'.00');
+                $('.rangedisplay .tot_to').html('To: $ '+ui.values[1]+'.00');
+                // now save it for manipulation
+                $('#from_total').attr('value',ui.values[0]);
+                $('#to_total').attr('value',ui.values[1]);
+                search_orders();
+            }
+        });
+        
 		if(!$('#orders1 ul.ConLibra li').length){
 			$('.userGrid').find('.leftMargin').removeClass('leftMargin');
 		}
@@ -169,4 +244,57 @@
         // now this is important, so that the page won't jump
         return false;
 	}
+  
+   $("#search_on").change(function(){
+    search_orders();
+  });
+  
+  $(".status").click(function(){
+    search_orders();
+  });
+  
+  $(document).keypress(function(e) {
+    
+    if(e.which == 13) {
+      e.preventDefault();
+      search_orders();
+    }
+  });
+  
+  
+  function search_orders()
+  {
+    site_id = "<%= params[:site_id] %>";
+    total = "off"
+     $("input[name=total]:checked").each(function() {
+        total = "on";
+    });
+    date_created = "off"
+    $("input[name=date_created]:checked").each(function() {
+        date_created = "on";
+    });
+    status = ""
+    $("input[name=status]:checked").each(function() {
+        status = $(this).val();
+    });
+    var search_Data = {
+            'search_on' : $('#search_on').val(),
+            'query' : $('#query').val(),
+            'total' : total,
+            'total_amount_from' : $('#from_total').val(),
+            'total_amount_to' : $('#to_total').val(),
+            'date_created': date_created,
+            'date_created_from': $('#date_created_from').val(),
+            'date_created_to': $("#date_created_to").val(),
+            'status': status
+        }
+        $.ajaxSetup({
+            data : search_Data
+        });
+        url = "/sites/"+site_id+"/orders/search.js"
+  $.post(url,
+        function(data){
+          },"script");
+  }
+
 </script>

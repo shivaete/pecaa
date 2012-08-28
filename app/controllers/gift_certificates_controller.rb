@@ -3,16 +3,29 @@ class GiftCertificatesController < ApplicationController
   # GET /gift_certificates.json
   layout 'features'
   def index
+
     @gift_certificates= GiftCertificate.where('')
+
     if !params[:query].blank?
       @searchName	=	params[:query]
       @searchOn	=	params[:search_on]
+
       if params[:search_on] == "assigned_to"
         user_ids = User.where("username like ?", "%#{params[:query]}%").collect(&:id)
         @gift_certificates= @gift_certificates.where("assigned_to in (?)", user_ids)
       else
         @gift_certificates= @gift_certificates.where("#{params[:search_on]} like ?", "%#{params[:query]}%")
       end
+    end
+    if params[:search]
+      min,max = params[:search][:amount].split(' ')
+
+      @gift_certificates = @gift_certificates.where(:value => (min..max)) if min or max
+
+      mindt,maxdt = params[:search][:created_at].split(' ')
+      @gift_certificates = @gift_certificates.where(:created_at => (Date.strptime(mindt,"%m/%d/%Y")..Date.strptime(maxdt,"%m/%d/%Y"))) if mindt or maxdt
+      minexdt,maxexdt = params[:search][:expired_date].split(' ')
+      @gift_certificates = @gift_certificates.where(:expired_date => (Date.strptime(minexdt,"%m/%d/%Y")..Date.strptime(maxexdt,"%m/%d/%Y")))    if minexdt or maxexdt
     end
     if !params[:date_added].blank?
       @gift_certificates = @gift_certificates.where(:created_at => (Date.strptime(params[:start_date],"%m-%d-%Y")..Date.strptime(params[:end_date],"%m-%d-%Y")))
